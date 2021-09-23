@@ -9,11 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //    let apiKey = "be83bddb963d2ad00bcb99f8c9c43e1f"
-    
     private var searches: [FlickrSearchResults] = []
     private let flickr = Flickr()
-    
     
     
     @IBAction func selectBtn(_ sender: UIBarButtonItem) {
@@ -26,17 +23,12 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var imageCollectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        self.setupSearchController()
         collectionCellUI()
     }
-    
-    
 }
 
 
@@ -61,14 +53,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelega
         return cell
     }
     
-//    func setupSearchController() {
-//        let searchBar = UISearchBar()
-//        searchBar.placeholder = "Search"
-//        self.navigationItem.titleView = searchBar
-//        self.navigationItem.rightBarButtonItem?.tintColor = .systemGreen
-//    }
-    
-    // MARK: - collectionView UI
+
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionCellUI(){
         let interval:CGFloat = 5
@@ -87,12 +73,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelega
 
 
 // MARK: - Text Field Delegate
+
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         guard let text = textField.text, !text.isEmpty else { return true }
         
-        // 1
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         textField.addSubview(activityIndicator)
         activityIndicator.frame = textField.bounds
@@ -107,7 +93,6 @@ extension ViewController: UITextFieldDelegate {
                     print("Error Searching: \(error)")
                     
                 case .success(let results):
-                    print(results)
                     self.searches.insert(results, at: 0)
                     self.imageCollectionView.reloadData()
                 }

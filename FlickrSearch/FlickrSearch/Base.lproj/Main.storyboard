@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zcq-dh-i5L">
-                                <rect key="frame" x="0.0" y="149" width="414" height="713"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r28-0F-dOn">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,25 +55,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gyW-XU-prl"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzg-Ii-oa5">
-                                <rect key="frame" x="186" y="108" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zcq-dh-i5L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6cp-KY-gcO"/>
-                            <constraint firstItem="fzg-Ii-oa5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Je2-q0-zts"/>
-                            <constraint firstItem="fzg-Ii-oa5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NFj-eJ-j3i"/>
+                            <constraint firstItem="zcq-dh-i5L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ctv-g9-qXc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zcq-dh-i5L" secondAttribute="trailing" id="fjm-AK-rDu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zcq-dh-i5L" secondAttribute="bottom" id="hbo-RR-S3V"/>
-                            <constraint firstItem="zcq-dh-i5L" firstAttribute="top" secondItem="fzg-Ii-oa5" secondAttribute="bottom" constant="20" id="oBK-t5-kmu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5dm-TT-NjT">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" textAlignment="natural" minimumFontSize="17" id="iO2-JS-Vfe">
+                            <rect key="frame" x="126" y="5" width="162" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="BYZ-38-t0r" id="gdP-hD-Uju"/>
+                            </connections>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" image="square.and.arrow.up" catalog="system" id="Xvm-FV-mkV">
                             <connections>
                                 <action selector="selectBtn:" destination="BYZ-38-t0r" id="Ulv-Do-ETL"/>
@@ -82,7 +84,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageCollectionView" destination="zcq-dh-i5L" id="b4c-OQ-c6a"/>
-                        <outlet property="searchLabel" destination="fzg-Ii-oa5" id="Svq-2Z-mYz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -9,11 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var searchLabel: UILabel!
+    private let sectionInsets = UIEdgeInsets(
+        top: 50.0,
+        left: 20.0,
+        bottom: 50.0,
+        right: 20.0)
+    
+    //    let apiKey = "be83bddb963d2ad00bcb99f8c9c43e1f"
+    
+    private var searches: [FlickrSearchResults] = []
+    private let flickr = Flickr()
+    
+    
+    
     @IBAction func selectBtn(_ sender: UIBarButtonItem) {
         print("btn pressed")
         var selectedLabel = UIBarButtonItem(title: "0 photos selected", style: .plain, target: .none, action: nil)
-//        selectedLabel.isEnabled = false
+        //        selectedLabel.isEnabled = false
         selectedLabel.tintColor = .systemGreen
         if self.navigationItem.rightBarButtonItems?.count == 1{
             self.navigationItem.rightBarButtonItems?.append(selectedLabel)
@@ -26,7 +38,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSearchController()
+        //        self.setupSearchController()
         collectionCellUI()
     }
     
@@ -35,14 +47,22 @@ class ViewController: UIViewController {
 
 
 
+// MARK: - UICollectionViewDataSource
 extension ViewController: UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UIScrollViewDelegate , UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return searches.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return searches[section].searchResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCell
-        cell.backgroundColor = .gray
+        let flickrPhoto = photo(for: indexPath)
+        cell.backgroundColor = .white
+        cell.cellImage.image = flickrPhoto.thumbnail
         return cell
     }
     
@@ -83,5 +103,54 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UISearchResultsUpd
         return footerView
     }
     
+}
+
+// MARK: - Private
+private extension ViewController {
+    func photo(for indexPath: IndexPath) -> FlickrPhoto {
+        return searches[indexPath.section].searchResults[indexPath.row]
+    }
+}
+
+
+// MARK: - Text Field Delegate
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard
+            let text = textField.text,
+            !text.isEmpty
+        else { return true }
+        
+        // 1
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        textField.addSubview(activityIndicator)
+        activityIndicator.frame = textField.bounds
+        activityIndicator.startAnimating()
+        
+        flickr.searchFlickr(for: text) { searchResults in
+            DispatchQueue.main.async {
+                activityIndicator.removeFromSuperview()
+                
+                switch searchResults {
+                case .failure(let error) :
+                    // 2
+                    print("Error Searching: \(error)")
+                case .success(let results):
+                    // 3
+                    print("""
+            Found \(results.searchResults.count) \
+            matching \(results.searchTerm)
+            """)
+                    self.searches.insert(results, at: 0)
+                    // 4
+                    self.imageCollectionView.reloadData()
+                }
+            }
+        }
+        
+        textField.text = nil
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

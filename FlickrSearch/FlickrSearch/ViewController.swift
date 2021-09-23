@@ -9,12 +9,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let sectionInsets = UIEdgeInsets(
-        top: 50.0,
-        left: 20.0,
-        bottom: 50.0,
-        right: 20.0)
-    
     //    let apiKey = "be83bddb963d2ad00bcb99f8c9c43e1f"
     
     private var searches: [FlickrSearchResults] = []
@@ -25,7 +19,7 @@ class ViewController: UIViewController {
     @IBAction func selectBtn(_ sender: UIBarButtonItem) {
         print("btn pressed")
         var selectedLabel = UIBarButtonItem(title: "0 photos selected", style: .plain, target: .none, action: nil)
-        //        selectedLabel.isEnabled = false
+        
         selectedLabel.tintColor = .systemGreen
         if self.navigationItem.rightBarButtonItems?.count == 1{
             self.navigationItem.rightBarButtonItems?.append(selectedLabel)
@@ -48,7 +42,7 @@ class ViewController: UIViewController {
 
 
 // MARK: - UICollectionViewDataSource
-extension ViewController: UICollectionViewDelegateFlowLayout, UISearchResultsUpdating, UIScrollViewDelegate , UICollectionViewDelegate, UICollectionViewDataSource{
+extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate , UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return searches.count
@@ -60,25 +54,21 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UISearchResultsUpd
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ImageCollectionViewCell
-        let flickrPhoto = photo(for: indexPath)
+        
+        let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
         cell.backgroundColor = .white
         cell.cellImage.image = flickrPhoto.thumbnail
         return cell
     }
     
+//    func setupSearchController() {
+//        let searchBar = UISearchBar()
+//        searchBar.placeholder = "Search"
+//        self.navigationItem.titleView = searchBar
+//        self.navigationItem.rightBarButtonItem?.tintColor = .systemGreen
+//    }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        if let keyword = searchController.searchBar.text {
-            print(keyword)
-        }
-    }
-    
-    func setupSearchController() {
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "Search"
-        self.navigationItem.titleView = searchBar
-        self.navigationItem.rightBarButtonItem?.tintColor = .systemGreen
-    }
+    // MARK: - collectionView UI
     
     func collectionCellUI(){
         let interval:CGFloat = 5
@@ -91,35 +81,16 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UISearchResultsUpd
         flowLayout.itemSize = CGSize(width: width - interval, height: width - interval)
         
         self.imageCollectionView.collectionViewLayout = flowLayout
-        self.imageCollectionView.reloadData()
     }
     
-    private func createSpinenerFooter() -> UIView{
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        return footerView
-    }
-    
-}
-
-// MARK: - Private
-private extension ViewController {
-    func photo(for indexPath: IndexPath) -> FlickrPhoto {
-        return searches[indexPath.section].searchResults[indexPath.row]
-    }
 }
 
 
 // MARK: - Text Field Delegate
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard
-            let text = textField.text,
-            !text.isEmpty
-        else { return true }
+        
+        guard let text = textField.text, !text.isEmpty else { return true }
         
         // 1
         let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -133,21 +104,15 @@ extension ViewController: UITextFieldDelegate {
                 
                 switch searchResults {
                 case .failure(let error) :
-                    // 2
                     print("Error Searching: \(error)")
+                    
                 case .success(let results):
-                    // 3
-                    print("""
-            Found \(results.searchResults.count) \
-            matching \(results.searchTerm)
-            """)
+                    print(results)
                     self.searches.insert(results, at: 0)
-                    // 4
                     self.imageCollectionView.reloadData()
                 }
             }
         }
-        
         textField.text = nil
         textField.resignFirstResponder()
         return true

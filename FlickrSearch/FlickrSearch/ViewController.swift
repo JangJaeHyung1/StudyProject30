@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum FlickrConstants {
+  static let reuseIdentifier = "FlickrCell"
+  static let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+  static let itemsPerRow: CGFloat = 3
+}
+
 class ViewController: UIViewController {
     
     private var searches: [FlickrSearchResults] = []
@@ -54,6 +60,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionCellUI()
+        imageCollectionView.dragInteractionEnabled = true
     }
     
     
@@ -117,10 +124,25 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelega
         flowLayout.minimumLineSpacing = interval
         let width: CGFloat = ( UIScreen.main.bounds.width - interval) / 3
         flowLayout.itemSize = CGSize(width: width - interval, height: width - interval)
-        
+
         self.imageCollectionView.collectionViewLayout = flowLayout
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        if indexPath == largePhotoIndexPath {
+          let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
+          var size = collectionView.bounds.size
+          size.height -= 70
+          size.width -= 40
+          return flickrPhoto.sizeToFillWidth(of: size)
+        }
+        let paddingSpace = FlickrConstants.sectionInsets.left * (FlickrConstants.itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / FlickrConstants.itemsPerRow
+
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
     
     // MARK: - drag n drop IndexPath
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

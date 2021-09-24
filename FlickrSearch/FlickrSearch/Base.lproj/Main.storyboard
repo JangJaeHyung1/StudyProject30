@@ -73,6 +73,8 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Oec-9B-OyY"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gyW-XU-prl"/>
+                                    <outlet property="dragDelegate" destination="BYZ-38-t0r" id="WFm-AT-wCY"/>
+                                    <outlet property="dropDelegate" destination="BYZ-38-t0r" id="DW0-tD-aRb"/>
                                 </connections>
                             </collectionView>
                         </subviews>

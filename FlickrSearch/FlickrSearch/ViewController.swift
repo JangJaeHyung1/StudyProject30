@@ -18,8 +18,12 @@ class ViewController: UIViewController {
     private var searches: [FlickrSearchResults] = []
     private let flickr = Flickr()
     
-    // MARK: - drag n drop
 
+    var selectedPhotos: [FlickrPhoto] = []
+    let shareTextLabel = UILabel()
+
+    
+    // MARK: - Large Photo
     var largePhotoIndexPath: IndexPath? {
       didSet {
         var indexPaths: [IndexPath] = []
@@ -44,16 +48,102 @@ class ViewController: UIViewController {
       }
     }
 
+    // MARK: - set right bar btn
+    
+    var isSharing = false {
+      didSet {
+        imageCollectionView.allowsMultipleSelection = isSharing
+        imageCollectionView.selectItem(at: nil, animated: true, scrollPosition: [])
+        selectedPhotos.removeAll()
+
+        guard let shareButton = navigationItem.rightBarButtonItems?.first else { return }
+        guard isSharing else {
+            navigationItem.setRightBarButtonItems([shareButton], animated: true)
+          return
+        }
+        
+        if largePhotoIndexPath != nil {
+          largePhotoIndexPath = nil
+        }
+        
+        updateSharedPhotoCountLabel()
+
+        let sharingItem = UIBarButtonItem(customView: shareTextLabel)
+        let items: [UIBarButtonItem] = [
+          shareButton,
+          sharingItem
+        ]
+        navigationItem.setRightBarButtonItems(items, animated: true)
+      }
+    }
+
     
     @IBAction func selectBtn(_ sender: UIBarButtonItem) {
-//        print("btn pressed")
-        var selectedLabel = UIBarButtonItem(title: "0 photos selected", style: .plain, target: .none, action: nil)
         
-        selectedLabel.tintColor = .systemGreen
-        if self.navigationItem.rightBarButtonItems?.count == 1{
-            self.navigationItem.rightBarButtonItems?.append(selectedLabel)
+        guard !searches.isEmpty else {
+          return
         }
+
+        guard !selectedPhotos.isEmpty else {
+          isSharing.toggle()
+          return
+        }
+
+        guard isSharing else {
+          return
+        }
+        
+        let images: [UIImage] = selectedPhotos.compactMap { photo in
+          guard let thumbnail = photo.thumbnail else {
+            return nil
+          }
+
+          return thumbnail
+        }
+
+        guard !images.isEmpty else {
+          return
+        }
+
+        let shareController = UIActivityViewController(
+          activityItems: images,
+          applicationActivities: nil)
+
+        shareController.completionWithItemsHandler = { _, _, _, _ in
+          self.isSharing = false
+          self.selectedPhotos.removeAll()
+          self.updateSharedPhotoCountLabel()
+        }
+
+        shareController.popoverPresentationController?.barButtonItem = sender
+        shareController.popoverPresentationController?.permittedArrowDirections = .any
+        present(shareController, animated: true, completion: nil)
+
+
+
+//        print("btn pressed")
+//        var selectedLabel = UIBarButtonItem(title: "0 photos selected", style: .plain, target: .none, action: nil)
+//        
+//        selectedLabel.tintColor = .systemGreen
+//        if self.navigationItem.rightBarButtonItems?.count == 1{
+//            self.navigationItem.rightBarButtonItems?.append(selectedLabel)
+//        }
     }
+    
+    func updateSharedPhotoCountLabel() {
+      if isSharing {
+        shareTextLabel.text = "\(selectedPhotos.count) photos selected"
+      } else {
+        shareTextLabel.text = ""
+      }
+
+        shareTextLabel.textColor = .systemGreen
+
+      UIView.animate(withDuration: 0.3) {
+        self.shareTextLabel.sizeToFit()
+      }
+    }
+
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
@@ -114,38 +204,33 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelega
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
+    // 컬렉션뷰 UI
     
-    func collectionCellUI(){
-        let interval:CGFloat = 5
-        let flowLayout: UICollectionViewFlowLayout
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.init(top: interval , left: interval, bottom: 0, right: interval)
-        flowLayout.minimumInteritemSpacing = interval
-        flowLayout.minimumLineSpacing = interval
-        let width: CGFloat = ( UIScreen.main.bounds.width - interval) / 3
-        flowLayout.itemSize = CGSize(width: width - interval, height: width - interval)
-
-        self.imageCollectionView.collectionViewLayout = flowLayout
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        if indexPath == largePhotoIndexPath {
+//          let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
+//          var size = collectionView.bounds.size
+//          size.height -= 70
+//          size.width -= 40
+//          return flickrPhoto.sizeToFillWidth(of: size)
+//        }
+//        let paddingSpace = FlickrConstants.sectionInsets.left * (FlickrConstants.itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / FlickrConstants.itemsPerRow
+//
+//        return CGSize(width: widthPerItem, height: widthPerItem)
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        if indexPath == largePhotoIndexPath {
-          let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
-          var size = collectionView.bounds.size
-          size.height -= 70
-          size.width -= 40
-          return flickrPhoto.sizeToFillWidth(of: size)
-        }
-        let paddingSpace = FlickrConstants.sectionInsets.left * (FlickrConstants.itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / FlickrConstants.itemsPerRow
-
-        return CGSize(width: widthPerItem, height: widthPerItem)
-    }
+    // MARK: - select item
     
-    // MARK: - drag n drop IndexPath
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        guard !isSharing else {
+          return true
+        }
+
         if largePhotoIndexPath == indexPath {
             largePhotoIndexPath = nil
         } else {
@@ -154,8 +239,28 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelega
         return false
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard isSharing else {
+            return
+          }
+          let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
+          selectedPhotos.append(flickrPhoto)
+          updateSharedPhotoCountLabel()
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+      guard isSharing else {
+        return
+      }
+
+      let flickrPhoto = searches[indexPath.section].searchResults[indexPath.row]
+      if let index = selectedPhotos.firstIndex(of: flickrPhoto) {
+        selectedPhotos.remove(at: index)
+        updateSharedPhotoCountLabel()
+      }
+    }
+    
+
 }
 
 

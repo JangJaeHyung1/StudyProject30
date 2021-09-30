@@ -1,7 +1,7 @@
 # StudyProject30
 iOS 개발 스터디
 
-첫번째) 09.24 //  FlickrSearch(https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2020%20-%20FlickrSearch) 
+첫번째) 09.24 - FlickrSearch(https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2020%20-%20FlickrSearch) 
 
 collectionView의 FlowLayout과 (https://ggasoon2.tistory.com/17)
 

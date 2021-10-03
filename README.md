@@ -5,7 +5,7 @@ iOS 개발 스터디
 
 09.24 - FlickrSearch (https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2020%20-%20FlickrSearch) 
 
-collectionView의 FlowLayout과 (https://ggasoon2.tistory.com/17).
+3xN의 collectionView 만들기 (flowLayout - https://ggasoon2.tistory.com/17).
 
 requestAPI에 대해 공부 - seachBar의 검색 키워드에 대하여 FlickerImage API를 호출하여 3xN collection에 이미지 불러오기 
 

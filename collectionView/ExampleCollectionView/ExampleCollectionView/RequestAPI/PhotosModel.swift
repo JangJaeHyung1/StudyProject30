@@ -27,13 +27,3 @@ struct Photo: Codable {
     let title: String
     let ispublic, isfriend, isfamily: Int
 }
-
-//struct FlickrSearchResults {
-//  let searchTerm: String
-//  let searchResults: [FlickrPhoto]
-//}
-//
-//struct FlickrPhoto {
-//    var thumbnail: UIImage?
-//    var largeImage: UIImage?
-//}

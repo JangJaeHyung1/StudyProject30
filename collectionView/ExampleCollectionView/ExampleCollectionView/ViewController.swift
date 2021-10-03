@@ -76,10 +76,15 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        print(searchBar.text)
         arr = []
+        
         if let keyword = searchBar.text {
             requestFlickr(searchKey: keyword) { [weak self] photos in
+                
+                guard let photos = photos else {
+                    return
+                }
+                
                 for i in 0 ... photos.count-1{
                     if let images = fetchImage(serverId: photos[i].server,
                                                photoId: photos[i].id,
@@ -87,10 +92,10 @@ extension ViewController: UISearchBarDelegate{
                         self?.arr.append(images)
                     }
                 }
+                
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
-                
             }
         }
     }

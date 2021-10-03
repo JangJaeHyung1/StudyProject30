@@ -1,24 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CustomUILabel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7W4-dW-JQg">
+                                <rect key="frame" x="73" y="408" width="116" height="9"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="9" id="MiZ-JZ-5lN"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보는 것이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrs-RN-D9o">
+                                <rect key="frame" x="77" y="318" width="147" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="더 재미있을 수가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4d-fL-1jD">
+                                <rect key="frame" x="77" y="424" width="260" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="없지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8b-qe-5iY">
+                                <rect key="frame" x="77" y="477" width="70" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하는 것" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2h-lM-SCU">
+                                <rect key="frame" x="77" y="371" width="112" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpc-Gh-lK5">
+                                <rect key="frame" x="194" y="371" width="70" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x4d-fL-1jD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="06W-JU-z3r"/>
+                            <constraint firstItem="jpc-Gh-lK5" firstAttribute="leading" secondItem="J2h-lM-SCU" secondAttribute="trailing" constant="5" id="6Jr-Kg-Nz8"/>
+                            <constraint firstItem="7W4-dW-JQg" firstAttribute="leading" secondItem="J2h-lM-SCU" secondAttribute="leading" constant="-4" id="AaY-NW-P40"/>
+                            <constraint firstItem="x4d-fL-1jD" firstAttribute="top" secondItem="jpc-Gh-lK5" secondAttribute="bottom" constant="5" id="E1C-yi-V2T"/>
+                            <constraint firstItem="J2h-lM-SCU" firstAttribute="top" secondItem="Lrs-RN-D9o" secondAttribute="bottom" constant="5" id="GnV-kb-8l6"/>
+                            <constraint firstItem="7W4-dW-JQg" firstAttribute="trailing" secondItem="J2h-lM-SCU" secondAttribute="trailing" id="Jhj-gv-Jv1"/>
+                            <constraint firstItem="Lrs-RN-D9o" firstAttribute="leading" secondItem="J2h-lM-SCU" secondAttribute="leading" id="N7n-8a-ked"/>
+                            <constraint firstItem="J2h-lM-SCU" firstAttribute="leading" secondItem="x4d-fL-1jD" secondAttribute="leading" id="OD3-rV-ZC0"/>
+                            <constraint firstItem="R8b-qe-5iY" firstAttribute="top" secondItem="x4d-fL-1jD" secondAttribute="bottom" constant="5" id="QuK-Cx-HOK"/>
+                            <constraint firstItem="R8b-qe-5iY" firstAttribute="leading" secondItem="x4d-fL-1jD" secondAttribute="leading" id="TDt-bC-bX2"/>
+                            <constraint firstItem="7W4-dW-JQg" firstAttribute="firstBaseline" secondItem="J2h-lM-SCU" secondAttribute="firstBaseline" constant="-1" id="lJS-TB-S4n"/>
+                            <constraint firstItem="x4d-fL-1jD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lca-KA-ddd"/>
+                            <constraint firstItem="x4d-fL-1jD" firstAttribute="top" secondItem="J2h-lM-SCU" secondAttribute="bottom" constant="5" id="mhd-RA-3DY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textlbl" destination="J2h-lM-SCU" id="kWl-7K-URh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-23.188405797101453" y="67.633928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

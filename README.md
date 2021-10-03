@@ -26,16 +26,16 @@ suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 
 
 - Git API를 활용하여 git 아이디를 검색하면 follower를 나타내주는 간단한 검색 어플 제작.
 
-
-<img width="481" alt="1" src="https://user-images.githubusercontent.com/37135479/135764110-643bcdb4-b896-4f27-859e-a38ba7adb2b7.png">
 1.초기화면
+<img width="481" alt="1" src="https://user-images.githubusercontent.com/37135479/135764110-643bcdb4-b896-4f27-859e-a38ba7adb2b7.png">
 
-<img width="481" alt="2" src="https://user-images.githubusercontent.com/37135479/135764119-732447a3-c507-4d21-8d43-c5a0bc6c0ec0.png">
 2. 검색 성공시 팔로워의 profile image와 git id를 tableVC에 표현
+<img width="481" alt="2" src="https://user-images.githubusercontent.com/37135479/135764119-732447a3-c507-4d21-8d43-c5a0bc6c0ec0.png">
 
-<img width="481" alt="3" src="https://user-images.githubusercontent.com/37135479/135764123-58988ea2-a8a6-4d56-8c58-53c4339634ef.png">
 3. URLsession의 response가 nil인 상황 (git id가 없을 때)
+<img width="481" alt="3" src="https://user-images.githubusercontent.com/37135479/135764123-58988ea2-a8a6-4d56-8c58-53c4339634ef.png">
 
-<img width="481" alt="4" src="https://user-images.githubusercontent.com/37135479/135764128-9969b33e-5d09-4b7f-bb62-250ca51b31cb.png">
 4. URLsession에서 json model로 리턴되는 data의 count가 0일 때 (follower가 없을 때)
+<img width="481" alt="4" src="https://user-images.githubusercontent.com/37135479/135764128-9969b33e-5d09-4b7f-bb62-250ca51b31cb.png">
+
 

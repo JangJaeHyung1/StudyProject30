@@ -3,11 +3,13 @@ iOS 개발 스터디
 
 ## 첫번째 class
 
-09.24 - FlickrSearch(https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2020%20-%20FlickrSearch) 
+09.24 - FlickrSearch (https://github.com/soapyigu/Swift-30-Projects/tree/master/Project%2020%20-%20FlickrSearch) 
 
 collectionView의 FlowLayout과 (https://ggasoon2.tistory.com/17).
 
-requestAPI에 대해 공부. 그리고 apiKey는 config에 저장하고, git ignore로 깃에 업로드 되지 않도록 수정.(https://ggasoon2.tistory.com/18).
+requestAPI에 대해 공부 - seachBar의 검색 키워드에 대하여 FlickerImage API를 호출하여 3xN collection에 이미지 불러오기 
+
+그리고 apiKey는 config에 저장하고, git ignore로 깃에 업로드 되지 않도록 수정. (https://ggasoon2.tistory.com/18).
 
 
 ## 두번째 class

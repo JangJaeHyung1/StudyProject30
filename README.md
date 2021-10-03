@@ -19,6 +19,7 @@ Session의 Configuration 파라미터 값.
 2. Default값의 configuration을 갖는 session은 shared 세션과 상당히 비슷하지만 delegate를 통해 데이터를 점진적으로 불러올 수 있음.
 3. Ephemeral session은 캐시나 쿠키, credentials(신원증명?)을 디스크에 기록하지 않음.
 4. Background session은 앱이 실행중이지 않을 때도 백그라운드에서 컨텐츠를 업로드하거나 다운로드할 수 있게 해줌.    
+---
 
 
 

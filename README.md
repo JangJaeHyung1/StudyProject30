@@ -32,7 +32,7 @@ suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 
 
 <img width="481" alt="1" src="https://user-images.githubusercontent.com/37135479/135764110-643bcdb4-b896-4f27-859e-a38ba7adb2b7.png">
 
-2. 검색 성공시 팔로워의 profile image와 git id를 tableVC에 표현
+2. 검색 성공시 팔로워의 profile image와 git id를 tableVC로 표현
 
 <img width="481" alt="2" src="https://user-images.githubusercontent.com/37135479/135764119-732447a3-c507-4d21-8d43-c5a0bc6c0ec0.png">
 

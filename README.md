@@ -32,6 +32,7 @@ Session의 Configuration 파라미터 값.
 - status 값으로 https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.1 참고 (rfc 공식문서)
 
 - response의 값이 없을 때 completion(nil) 반환 -> nil값이 들어왔을 때를 구분하여 프로세스 처리
+---
 
 ### Git API를 활용하여 git 아이디를 검색하면 follower를 나타내주는 간단한 검색 어플 제작.
 

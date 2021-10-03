@@ -9,7 +9,7 @@ iOS 개발 스터디
 
 requestAPI에 대해 공부 - seachBar의 검색 키워드에 대하여 FlickerImage API를 호출하여 3xN collection에 이미지 불러오기 
 
-그리고 apiKey는 config에 저장하고, git ignore로 깃에 업로드 되지 않도록. (https://ggasoon2.tistory.com/18).
+apiKey에 대하여. apiKey는 config에 저장하고, git ignore로 깃에 업로드 되지 않도록. (https://ggasoon2.tistory.com/18).
 
 
 ## 두번째 class

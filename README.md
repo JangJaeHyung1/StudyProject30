@@ -28,7 +28,7 @@ suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 
 
 
 
-1.초기화면
+1. 초기화면
 
 <img width="481" alt="1" src="https://user-images.githubusercontent.com/37135479/135764110-643bcdb4-b896-4f27-859e-a38ba7adb2b7.png">
 

@@ -24,7 +24,7 @@ dataTask가 resume()으로 시작하는 이유 - URLSessiond의 dataTask는 susp
 
 suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 초과의 영향을 받지 않고, 다운로드 작업은 이후 resume으로 진행 가능.
 
-Git API를 활용하여 git 아이디를 검색하면 follower를 나타내주는 간단한 검색 어플 제작.
+- Git API를 활용하여 git 아이디를 검색하면 follower를 나타내주는 간단한 검색 어플 제작.
 
 
 <img width="481" alt="1" src="https://user-images.githubusercontent.com/37135479/135764110-643bcdb4-b896-4f27-859e-a38ba7adb2b7.png">

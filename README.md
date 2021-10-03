@@ -20,15 +20,15 @@ Session의 Configuration 파라미터 값.
 3. Ephemeral session은 캐시나 쿠키, credentials(신원증명?)을 디스크에 기록하지 않음.
 4. Background session은 앱이 실행중이지 않을 때도 백그라운드에서 컨텐츠를 업로드하거나 다운로드할 수 있게 해줌.
 
-dataTask가 resume()으로 시작하는 이유 - URLSessiond의 dataTask는 suspend() 상태로 시작하기 때문. 
+- dataTask가 resume()으로 시작하는 이유 - URLSessiond의 dataTask는 suspend() 상태로 시작하기 때문. 
 
-suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 초과의 영향을 받지 않고, 다운로드 작업은 이후 resume으로 진행 가능.
+- suspend 상태에서는 네트워크 트래픽이 생성되지 않으며 시간 초과의 영향을 받지 않고, 다운로드 작업은 이후 resume으로 진행 가능.
 
-response의 값이 없을 때 completion(nil) 반환 -> nil값이 들어왔을 때를 구분하여 프로세스 처리
+- response의 값이 없을 때 completion(nil) 반환 -> nil값이 들어왔을 때를 구분하여 프로세스 처리
 
-status 값으로 https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.1 참고 (rfc 공식문서)
+- status 값으로 https://datatracker.ietf.org/doc/html/rfc7231#section-6.3.1 참고 (rfc 공식문서)
 
-response의 값이 없을 때 completion(nil) 반환 -> nil값이 들어왔을 때를 구분하여 프로세스 처리
+- response의 값이 없을 때 completion(nil) 반환 -> nil값이 들어왔을 때를 구분하여 프로세스 처리
 
 ### Git API를 활용하여 git 아이디를 검색하면 follower를 나타내주는 간단한 검색 어플 제작.
 

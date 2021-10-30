@@ -65,7 +65,8 @@ Animation의 생성 조건
 2. 종료점 위치
 3. 진행 소요 시간  
 
-Animate함수를 이용하여 종이 움직이는 애니메이션 제작. 
+Animate함수를 이용하여 종이 움직이는 애니메이션 제작.   
+
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/37135479/139529536-c83fd9ae-a5f7-48d9-9748-e170fc68e7e7.gif)
 
 

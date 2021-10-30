@@ -57,3 +57,25 @@ Session의 Configuration 파라미터 값.
 <img width="481" alt="4" src="https://user-images.githubusercontent.com/37135479/135764128-9969b33e-5d09-4b7f-bb62-250ca51b31cb.png">
 
 
+## 세번째 class
+10.28 - Animation에 대해 공부
+
+Animation의 생성 조건  
+1. 시작점 위치
+2. 종료점 위치
+3. 진행 소요 시간  
+
+Animate함수를 이용하여 종이 움직이는 애니메이션 제작. 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/37135479/139529415-c3745bca-408d-477f-b659-8e290a1966ef.gif)
+
+
+https://nutritious-scowl-1e3.notion.site/10-28-7191dea0909a440db051c7f1f9be9f86
+
+
++ https://github.com/ameizi/awesome-ios-animation 애니메이션 참고 사이트  
+
+Animation의 구현에 너무 많은 작업을 요구한다면 디자이너가 쉽게 제작가능한 gif로 대체가 가능하다.
+하지만 gif를 많이 넣게되면 앱이 무거워지는 현상이 발생한다. 그것을 대체하기 위해 lottie 채택 가능  
+
+airbnb에서 제작한 gif 대체 'lottie' 라이브러리
+https://github.com/airbnb/lottie-ios  

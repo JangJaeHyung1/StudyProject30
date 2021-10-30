@@ -72,7 +72,7 @@ Animate함수를 이용하여 종이 움직이는 애니메이션 제작.
 https://nutritious-scowl-1e3.notion.site/10-28-7191dea0909a440db051c7f1f9be9f86
 
 
-+ https://github.com/ameizi/awesome-ios-animation 애니메이션 참고 사이트  
+https://github.com/ameizi/awesome-ios-animation 애니메이션 참고 사이트  
 
 Animation의 구현에 너무 많은 작업을 요구한다면 디자이너가 쉽게 제작가능한 gif로 대체가 가능하다.
 하지만 gif를 많이 넣게되면 앱이 무거워지는 현상이 발생한다. 그것을 대체하기 위해 lottie 채택 가능  

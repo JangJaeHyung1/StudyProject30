@@ -69,7 +69,7 @@ Animate함수를 이용하여 종이 움직이는 애니메이션 제작.
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/37135479/139529536-c83fd9ae-a5f7-48d9-9748-e170fc68e7e7.gif)
 
-
+회의록 노션일지  
 https://nutritious-scowl-1e3.notion.site/10-28-7191dea0909a440db051c7f1f9be9f86
 
 

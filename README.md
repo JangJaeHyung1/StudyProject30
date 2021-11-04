@@ -82,3 +82,11 @@ Animation의 구현에 너무 많은 작업을 요구한다면 디자이너가 �
 
 airbnb에서 제작한 gif 대체 'lottie' 라이브러리
 https://github.com/airbnb/lottie-ios  
+
+
+
+## 네번째 class
+
+11.04 - Kingfisher에 대해 공부, 라이브러리에 대한 고찰
+
+- 회의록 노션일지  https://nutritious-scowl-1e3.notion.site/11-04-a8267a5e65ff457b9af3fa06cf071ca2
